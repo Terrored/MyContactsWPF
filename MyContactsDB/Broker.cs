@@ -86,6 +86,9 @@ namespace MyContactsDB
                     person.LastName = reader["LastName"].ToString();
                     person.EmailAddress = reader["Email"].ToString();
                     person.Number = reader["Number"].ToString();
+                    person.Address = reader["Address"].ToString();
+                    person.City = reader["City"].ToString();
+                    person.Company = reader["Company"].ToString();
 
                     contactsList.Add(person);
                 }
@@ -133,6 +136,8 @@ namespace MyContactsDB
                 
             }
         }
+
+       
 
 
     }

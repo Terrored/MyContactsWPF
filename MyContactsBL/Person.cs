@@ -27,9 +27,19 @@ namespace MyContactsBL
         public string EmailAddress { get; set; }
         public string Number { get; set; }
 
-        //public string Address { get; set; }
+        public string Address { get; set; }
 
-        //public string Nickname { get; set; }
+        public string City { get; set; }
+
+        public string Company { get; set; }
+
+        public string GetDetails()
+        {
+            string details = $"Address: {this.Address} \nCity: {this.City} \nCompany: {this.Company} ";
+
+            return details;
+        }
+        
 
         public override string ToString()
         {

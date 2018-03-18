@@ -30,6 +30,9 @@ namespace MyContacts
             broker = new Broker();
 
             ListBoxOfContacts.ItemsSource = broker.RetrievePersons();
+
+            
+            
         }
 
         private void AddContact_Click(object sender, RoutedEventArgs e)
@@ -86,6 +89,14 @@ namespace MyContacts
             }
             
            
+        }
+
+        private void detailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            person = new Person();
+            person = ListBoxOfContacts.SelectedItem as Person;
+
+            DetailsTextBlock.Text = person.GetDetails();
         }
     }
 }

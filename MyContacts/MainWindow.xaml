@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyContacts"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="700">
+        Title="MainWindow" Height="350" Width="800">
     <Grid>
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
 
 
 
@@ -33,6 +34,15 @@
             <TextBlock Text ="Number" Margin="5"/>
                <TextBox  x:Name="NumberTextBox" Margin="5"></TextBox>
         </StackPanel>
+        
+        <StackPanel Grid.Column="2" >
+            <TextBlock Text="Details: (only from database)" Margin ="5"></TextBlock>
+            <TextBlock
+                x:Name="DetailsTextBlock"></TextBlock>
+            
+                
+          
+        </StackPanel>
        
         <Button 
             Grid.Row="1"
@@ -47,7 +57,13 @@
             Margin="10"
             Content="Remove selected contact" Click="RemoveContact_Click"/>
         
-        <ListBox
+        <Button x:Name="detailsButton"
+                Grid.Column="2"
+                Grid.Row="1"
+                Margin="10"
+                Content="Details of selected contact" Click="detailsButton_Click"></Button>
+        
+        <ListBox 
             Grid.Row="0"
             Grid.Column="1"
             Grid.RowSpan="2"
