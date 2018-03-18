@@ -39,9 +39,18 @@ namespace MyContacts
             person.LastName = LastNameTextBox.Text;
             person.EmailAddress = EmailTextBox.Text;
             person.Number = NumberTextBox.Text;
-
-            broker.Insert(person);
-            MessageBox.Show("New contact was added successfully");
+            
+            
+            if (String.IsNullOrWhiteSpace(person.FirstName) && String.IsNullOrWhiteSpace(person.LastName)
+                && String.IsNullOrWhiteSpace(person.Number))
+            {
+                 MessageBox.Show("First name, last name and number can't be empty!", "Invalid data");
+            }
+            else
+            {
+               broker.Insert(person);
+                MessageBox.Show("New contact was added successfully");
+            }
             RefreshButton_Click(sender,e);
         }
 
