@@ -96,7 +96,15 @@ namespace MyContacts
             person = new Person();
             person = ListBoxOfContacts.SelectedItem as Person;
 
-            DetailsTextBlock.Text = person.GetDetails();
+            try
+            {
+                DetailsTextBlock.Text = person.GetDetails();
+            }
+            catch (Exception exception)
+            {
+                
+                
+            }
         }
     }
 }
