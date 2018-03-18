@@ -37,14 +37,23 @@ namespace MyContacts
             person = new Person();
             person.FirstName = FirstNameTextBox.Text;
             person.LastName = LastNameTextBox.Text;
-            person.EmailAddress = EmailTextBox.Text;
+
+            if (EmailTextBox.Text.Contains("@"))
+            {
+                person.EmailAddress = EmailTextBox.Text;
+            }
+            else
+            {
+                person.EmailAddress = "Invalid email address";
+            }
             person.Number = NumberTextBox.Text;
             
+                
             
             if (String.IsNullOrWhiteSpace(person.FirstName) && String.IsNullOrWhiteSpace(person.LastName)
                 && String.IsNullOrWhiteSpace(person.Number))
             {
-                 MessageBox.Show("First name, last name and number can't be empty!", "Invalid data");
+                 MessageBox.Show("First name, last name, and number are not valid data!", "Invalid data");
             }
             else
             {
@@ -63,9 +72,20 @@ namespace MyContacts
         {
             Person person = new Person();
             person = ListBoxOfContacts.SelectedItem as Person;
-            broker.Delete(person);
-            MessageBox.Show("New contact was deleted successfully");
-            RefreshButton_Click(sender, e);
+
+
+            try
+            {
+                broker.Delete(person);
+                MessageBox.Show("Contact was deleted successfully");
+                RefreshButton_Click(sender, e);
+            }
+            catch (Exception exception)
+            {
+                
+            }
+            
+           
         }
     }
 }
