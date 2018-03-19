@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,6 +106,37 @@ namespace MyContacts
                 
                 
             }
+        }
+
+        private void sortButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            ListBoxOfContacts.ItemsSource = sortListByName(broker.RetrievePersons());
+
+        }
+
+        private IEnumerable<IContact> sortListByName(IEnumerable<IContact> list)
+        {
+            return list.OrderBy(c => c.Name);
+        }
+
+        private IEnumerable<IContact> sortListByEmailAddress(IEnumerable<IContact> list)
+        {
+            return list.OrderBy(c => c.EmailAddress);
+        }
+        private IEnumerable<IContact> sortListByNumber(IEnumerable<IContact> list)
+        {
+            return list.OrderBy(c => c.Number);
+        }
+
+        private void sortByEmailButton_Click(object sender, RoutedEventArgs e)
+        {
+            ListBoxOfContacts.ItemsSource = sortListByEmailAddress(broker.RetrievePersons());
+        }
+
+        private void sortByNumberButton_Click(object sender, RoutedEventArgs e)
+        {
+            ListBoxOfContacts.ItemsSource = sortListByNumber(broker.RetrievePersons());
         }
     }
 }
